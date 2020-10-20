@@ -1,0 +1,18 @@
+#!/bin/bash
+
+VERSION=$1
+export MYPORT="${VERSION//_}"
+export SF=$2
+export DBNAME=dbt3_sf$SF
+export MSB=$HOME/sandboxes/msb_$VERSION
+export MYSQL="$MSB/use -u root -D $DBNAME --port=$MYPORT"
+
+$MSB/my sqladmin -uroot --port=$MYPORT create $DBNAME 
+
+$MYSQL < dbt3-mysql-tables.sql
+
+./dbdeployer-load-tables
+
+$MYSQL < dbt3-hist.sql
+
+

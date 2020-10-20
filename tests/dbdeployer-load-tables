@@ -1,0 +1,91 @@
+#!/bin/bash -x
+
+DATA_PATH=$HOME/dbt3/data-sf$SF
+
+# We create indexes on all foreign keys, and on max. one date column per table.
+# For each table, create indexes in sequence.
+# (Query plans may change with different order of index definitions.)
+
+load_table() {
+	file=$1.tbl
+	$MSB/my sqlimport -u root --fields-terminated-by='|' --port=$MYPORT $DBNAME $DATA_PATH/$file
+}
+
+supplier()
+{
+	load_table supplier
+
+	$MYSQL -e "CREATE INDEX i_s_nationkey ON supplier (s_nationkey);"
+	$MYSQL -e "ANALYZE TABLE supplier"
+}
+
+part()
+{
+	load_table part
+
+	$MYSQL -e "ANALYZE TABLE part"
+}
+
+partsupp()
+{
+	load_table partsupp
+
+	$MYSQL -e "CREATE INDEX i_ps_partkey ON partsupp (ps_partkey);"
+	$MYSQL -e "CREATE INDEX i_ps_suppkey ON partsupp (ps_suppkey);"
+	$MYSQL -e "ANALYZE TABLE partsupp"
+}
+
+customer()
+{
+	load_table customer
+
+	$MYSQL -e "CREATE INDEX i_c_nationkey ON customer (c_nationkey);"
+	$MYSQL -e "ANALYZE TABLE customer"
+}
+
+orders()
+{
+	load_table orders
+
+	$MYSQL -e "CREATE INDEX i_o_custkey ON orders (o_custkey);"
+	$MYSQL -e "CREATE INDEX i_o_orderdate ON orders (o_orderdate);"
+	$MYSQL -e "ANALYZE TABLE orders"
+}
+
+lineitem()
+{
+	load_table lineitem
+
+	$MYSQL -e "CREATE INDEX i_l_orderkey ON lineitem (l_orderkey);"
+	$MYSQL -e "CREATE INDEX i_l_partkey ON lineitem (l_partkey);"
+	$MYSQL -e "CREATE INDEX i_l_suppkey ON lineitem (l_suppkey);"
+	$MYSQL -e "CREATE INDEX i_l_partkey_suppkey ON lineitem (l_partkey, l_suppkey);"
+	$MYSQL -e "CREATE INDEX i_l_shipdate ON lineitem (l_shipdate);"
+	$MYSQL -e "ANALYZE TABLE lineitem"
+}
+
+nation()
+{
+	load_table nation
+
+	$MYSQL -e "CREATE INDEX i_n_regionkey ON nation (n_regionkey);"
+	$MYSQL -e "ANALYZE TABLE nation"
+}
+
+region()
+{
+	load_table region
+
+	$MYSQL -e "ANALYZE TABLE region"
+}
+
+supplier &
+part &
+partsupp &
+customer &
+orders &
+lineitem &
+nation &
+region &
+
+wait

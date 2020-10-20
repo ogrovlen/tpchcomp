@@ -1,0 +1,124 @@
+#!/bin/bash
+
+DATA_PATH=$HOME/dbt3/data-sf10
+PSQL="sudo -u postgres -i psql -d dbt3_sf10"
+
+load_table()
+{
+	table=${1}
+	file=${table}.tbl
+
+	${PSQL} << __EOF__
+COPY ${table} FROM PROGRAM 'sed "s/|$//" ${DATA_PATH}/${file}' USING DELIMITERS '|';
+__EOF__
+}
+
+supplier()
+{
+	load_table supplier
+
+	${PSQL} -c "ALTER TABLE supplier ADD CONSTRAINT pk_supplier PRIMARY KEY (s_suppkey);" &
+	${PSQL} -c "CREATE INDEX supplier_s_nationkey_idx ON supplier (s_nationkey);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE supplier;"
+}
+
+part()
+{
+	load_table part
+
+	${PSQL} -c "
+ALTER TABLE part 
+ADD CONSTRAINT pk_part PRIMARY KEY (p_partkey);"
+
+	${PSQL} -c "ANALYZE part;"
+}
+
+partsupp()
+{
+	load_table partsupp
+
+	${PSQL} -c "ALTER TABLE partsupp ADD CONSTRAINT pk_partsupp PRIMARY KEY (ps_partkey, ps_suppkey);" &
+	${PSQL} -c "CREATE INDEX partsupp_ps_suppkey_idx ON partsupp (ps_suppkey);" &
+	${PSQL} -c "CREATE INDEX partsupp_ps_partkey_idx ON partsupp (ps_partkey);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE partsupp;"
+}
+
+customer()
+{
+	load_table customer
+
+	${PSQL} -c "ALTER TABLE customer ADD CONSTRAINT pk_customer PRIMARY KEY (c_custkey);" &
+	${PSQL} -c "CREATE INDEX customer_c_nationkey ON customer (c_nationkey);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE customer;"
+}
+
+orders()
+{
+	load_table orders
+
+	${PSQL} -c "ALTER TABLE orders ADD CONSTRAINT pk_orders PRIMARY KEY (o_orderkey);" &
+	${PSQL} -c "CREATE INDEX orders_o_orderdate_idx ON orders (o_orderdate);" &
+	${PSQL} -c "CREATE INDEX orders_o_custkey_idx ON orders (o_custkey);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE orders;"
+}
+
+lineitem()
+{
+	load_table lineitem
+
+	${PSQL} -c "ALTER TABLE lineitem ADD CONSTRAINT pk_lineitem PRIMARY KEY (l_orderkey, l_linenumber);" &
+	${PSQL} -c "CREATE INDEX lineitem_l_orderkey_idx ON lineitem (l_orderkey);" &
+	${PSQL} -c "CREATE INDEX lineitem_l_partkey_idx ON lineitem (l_partkey);" &
+	${PSQL} -c "CREATE INDEX lineitem_l_suppkey_idx ON lineitem (l_suppkey);" &
+	${PSQL} -c "CREATE INDEX lineitem_l_partkey_l_suppkey_idx ON lineitem (l_partkey,l_suppkey);" &
+	${PSQL} -c "CREATE INDEX lineitem_l_shipdate_idx ON lineitem (l_shipdate);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE lineitem;"
+}
+
+nation()
+{
+	load_table nation
+
+	${PSQL} -c "ALTER TABLE nation ADD CONSTRAINT pk_nation PRIMARY KEY (n_nationkey);" &
+	${PSQL} -c "CREATE INDEX nation_n_regionkey_idx ON nation (n_regionkey);" &
+
+	wait
+
+	${PSQL} -c "ANALYZE nation;"
+}
+
+region()
+{
+	load_table region
+
+	${PSQL} -c "ALTER TABLE region ADD CONSTRAINT pk_region PRIMARY KEY (r_regionkey);"
+
+	${PSQL} -c "ANALYZE region;"
+}
+
+supplier &
+part &
+partsupp &
+customer &
+orders &
+lineitem &
+nation &
+region &
+
+wait
+

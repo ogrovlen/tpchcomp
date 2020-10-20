@@ -1,0 +1,4 @@
+#!/bin/bash
+postmaster_pid=$(pidof postgres | xargs -n1 | sort | head -n1)
+taskset -pc 30-31,62-63 $postmaster_pid
+pidof postgres -o $postmaster_pid | xargs -n1 taskset -pc 30-31,62-63

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export MSBDIR=$HOME/sandboxes/msb_$1
+SF=$2
+NRUNS=$3
+RESDIR=$4
+DB=dbt3_sf${SF}
+
+$MSBDIR/start
+$MSBDIR/use $DB < preload-withindex.sql > /dev/null
+python multiq-driver.py dbt3 $SF $NRUNS $RESDIR
+$MSBDIR/stop
+
+python multiq-result.py dbt3 $SF $RESDIR
+cat results-sf${SF}/${RESDIR}/res_default.csv
