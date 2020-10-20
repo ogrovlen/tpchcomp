@@ -1,0 +1,117 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.618 ms
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 27011.656 ms (00:27.012)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23409.867 ms (00:23.410)
+secs,cov
+25.199156231,0.07128833003503751
+Time: 1.020 ms
+pg_stat_statements_reset
+
+Time: 0.177 ms
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23486.892 ms (00:23.487)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23590.716 ms (00:23.591)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23469.515 ms (00:23.470)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23617.890 ms (00:23.618)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23647.254 ms (00:23.647)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23497.459 ms (00:23.497)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23511.848 ms (00:23.512)
+n_name,revenue
+INDIA                    ,549313339.9924
+CHINA                    ,532192336.1127
+VIETNAM                  ,532041185.1810
+JAPAN                    ,522646813.0067
+INDONESIA                ,519269180.7314
+Time: 23443.567 ms (00:23.444)
+QUERY PLAN
+Sort  (cost=2048289.07..2048289.13 rows=25 width=58)
+  Sort Key: (sum((lineitem.l_extendedprice * ('1'::numeric - lineitem.l_discount)))) DESC
+  ->  GroupAggregate  (cost=2047393.81..2048288.49 rows=25 width=58)
+        Group Key: nation.n_name
+        ->  Sort  (cost=2047393.81..2047572.69 rows=71549 width=38)
+              Sort Key: nation.n_name
+              ->  Hash Join  (cost=442567.26..2041624.59 rows=71549 width=38)
+                    Hash Cond: ((orders.o_custkey = customer.c_custkey) AND (supplier.s_nationkey = customer.c_nationkey))
+                    ->  Hash Join  (cost=363380.26..1912248.50 rows=1788778 width=50)
+                          Hash Cond: (lineitem.l_orderkey = orders.o_orderkey)
+                          ->  Nested Loop  (cost=42.23..1278403.43 rows=11808394 width=50)
+                                ->  Nested Loop  (cost=41.67..2184.07 rows=20000 width=38)
+                                      ->  Nested Loop  (cost=0.14..13.95 rows=5 width=30)
+                                            Join Filter: (nation.n_regionkey = region.r_regionkey)
+                                            ->  Index Scan using pk_nation on nation  (cost=0.14..12.51 rows=25 width=34)
+                                            ->  Materialize  (cost=0.00..1.07 rows=1 width=4)
+                                                  ->  Seq Scan on region  (cost=0.00..1.06 rows=1 width=4)
+                                                        Filter: (r_name = 'ASIA'::bpchar)
+                                      ->  Bitmap Heap Scan on supplier  (cost=41.53..394.02 rows=4000 width=8)
+                                            Recheck Cond: (s_nationkey = nation.n_nationkey)
+                                            ->  Bitmap Index Scan on supplier_s_nationkey_idx  (cost=0.00..40.53 rows=4000 width=0)
+                                                  Index Cond: (s_nationkey = nation.n_nationkey)
+                                ->  Index Scan using lineitem_l_suppkey_idx on lineitem  (cost=0.56..57.91 rows=590 width=20)
+                                      Index Cond: (l_suppkey = supplier.s_suppkey)
+                          ->  Hash  (cost=326058.85..326058.85 rows=2272254 width=8)
+                                ->  Bitmap Heap Scan on orders  (cost=31063.04..326058.85 rows=2272254 width=8)
+                                      Recheck Cond: ((o_orderdate >= '1995-01-01'::date) AND (o_orderdate < '1996-01-01 00:00:00'::timestamp without time zone))
+                                      ->  Bitmap Index Scan on orders_o_orderdate_idx  (cost=0.00..30494.98 rows=2272254 width=0)
+                                            Index Cond: ((o_orderdate >= '1995-01-01'::date) AND (o_orderdate < '1996-01-01 00:00:00'::timestamp without time zone))
+                    ->  Hash  (cost=50827.00..50827.00 rows=1500000 width=8)
+                          ->  Seq Scan on customer  (cost=0.00..50827.00 rows=1500000 width=8)
+Time: 2.543 ms
+Timing is off.
+secs,cov
+23.525746752750003,0.002987259815651553

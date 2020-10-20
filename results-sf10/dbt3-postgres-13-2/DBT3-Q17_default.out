@@ -1,0 +1,58 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.822 ms
+avg_yearly
+3192441.447142857143
+Time: 15871.642 ms (00:15.872)
+avg_yearly
+3192441.447142857143
+Time: 12912.272 ms (00:12.912)
+secs,cov
+14.3898976925,0.10273488283870923
+Time: 1.024 ms
+pg_stat_statements_reset
+
+Time: 0.157 ms
+avg_yearly
+3192441.447142857143
+Time: 12850.175 ms (00:12.850)
+avg_yearly
+3192441.447142857143
+Time: 12831.801 ms (00:12.832)
+avg_yearly
+3192441.447142857143
+Time: 12935.521 ms (00:12.936)
+avg_yearly
+3192441.447142857143
+Time: 12909.023 ms (00:12.909)
+avg_yearly
+3192441.447142857143
+Time: 12831.561 ms (00:12.832)
+avg_yearly
+3192441.447142857143
+Time: 12832.179 ms (00:12.832)
+avg_yearly
+3192441.447142857143
+Time: 12839.488 ms (00:12.839)
+avg_yearly
+3192441.447142857143
+Time: 13572.752 ms (00:13.573)
+QUERY PLAN
+Aggregate  (cost=1954149.94..1954149.95 rows=1 width=32)
+  ->  Hash Join  (cost=70985.79..1954102.37 rows=19026 width=8)
+        Hash Cond: (lineitem.l_partkey = part.p_partkey)
+        Join Filter: (lineitem.l_quantity < (SubPlan 1))
+        ->  Seq Scan on lineitem  (cost=0.00..1724402.52 rows=59986052 width=17)
+        ->  Hash  (cost=70962.00..70962.00 rows=1903 width=4)
+              ->  Seq Scan on part  (cost=0.00..70962.00 rows=1903 width=4)
+                    Filter: ((p_brand = 'Brand#11'::bpchar) AND (p_container = 'SM CAN'::bpchar))
+        SubPlan 1
+          ->  Aggregate  (cost=125.04..125.05 rows=1 width=32)
+                ->  Index Scan using lineitem_l_partkey_idx on lineitem lineitem_1  (cost=0.44..124.96 rows=30 width=5)
+                      Index Cond: (l_partkey = part.p_partkey)
+Time: 0.834 ms
+Timing is off.
+secs,cov
+12.949589702375,0.018392107011170625

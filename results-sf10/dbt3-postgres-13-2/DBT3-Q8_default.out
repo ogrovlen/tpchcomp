@@ -1,0 +1,91 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.602 ms
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 4689.000 ms (00:04.689)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3112.108 ms (00:03.112)
+secs,cov
+3.893482068,0.20197151708058145
+Time: 0.920 ms
+pg_stat_statements_reset
+
+Time: 0.156 ms
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3278.609 ms (00:03.279)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3226.211 ms (00:03.226)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3048.435 ms (00:03.048)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3082.848 ms (00:03.083)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3171.297 ms (00:03.171)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3094.122 ms (00:03.094)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3003.136 ms (00:03.003)
+o_year,mkt_share
+1995,0.03990105442957883437
+1996,0.04005020362089480152
+Time: 3032.544 ms (00:03.033)
+QUERY PLAN
+GroupAggregate  (cost=1714761.30..1715346.68 rows=2406 width=40)
+"  Group Key: (date_part('year'::text, (orders.o_orderdate)::timestamp without time zone))"
+  ->  Sort  (cost=1714761.30..1714820.33 rows=23611 width=46)
+"        Sort Key: (date_part('year'::text, (orders.o_orderdate)::timestamp without time zone))"
+        ->  Hash Join  (cost=42354.64..1713046.30 rows=23611 width=46)
+              Hash Cond: (supplier.s_nationkey = n2.n_nationkey)
+              ->  Hash Join  (cost=42353.08..1712854.20 rows=23611 width=20)
+                    Hash Cond: (orders.o_custkey = customer.c_custkey)
+                    ->  Nested Loop  (cost=4466.88..1674289.18 rows=118054 width=24)
+                          ->  Hash Join  (cost=4466.44..1487359.67 rows=391360 width=20)
+                                Hash Cond: (lineitem.l_suppkey = supplier.s_suppkey)
+                                ->  Nested Loop  (cost=0.44..1481849.88 rows=397618 width=20)
+                                      ->  Seq Scan on part  (cost=0.00..65962.00 rows=13257 width=4)
+                                            Filter: ((p_type)::text = 'LARGE BRUSHED TIN'::text)
+                                      ->  Index Scan using lineitem_l_partkey_idx on lineitem  (cost=0.44..106.50 rows=30 width=24)
+                                            Index Cond: (l_partkey = part.p_partkey)
+                                ->  Hash  (cost=3216.00..3216.00 rows=100000 width=8)
+                                      ->  Seq Scan on supplier  (cost=0.00..3216.00 rows=100000 width=8)
+                          ->  Index Scan using pk_orders on orders  (cost=0.43..0.48 rows=1 width=12)
+                                Index Cond: (o_orderkey = lineitem.l_orderkey)
+                                Filter: ((o_orderdate >= '1995-01-01'::date) AND (o_orderdate <= '1996-12-31'::date))
+                    ->  Hash  (cost=34136.20..34136.20 rows=300000 width=4)
+                          ->  Nested Loop  (cost=602.50..34136.20 rows=300000 width=4)
+                                ->  Hash Join  (cost=1.07..2.45 rows=5 width=4)
+                                      Hash Cond: (n1.n_regionkey = region.r_regionkey)
+                                      ->  Seq Scan on nation n1  (cost=0.00..1.25 rows=25 width=8)
+                                      ->  Hash  (cost=1.06..1.06 rows=1 width=4)
+                                            ->  Seq Scan on region  (cost=0.00..1.06 rows=1 width=4)
+                                                  Filter: (r_name = 'AMERICA'::bpchar)
+                                ->  Bitmap Heap Scan on customer  (cost=601.43..6226.75 rows=60000 width=8)
+                                      Recheck Cond: (c_nationkey = n1.n_nationkey)
+                                      ->  Bitmap Index Scan on customer_c_nationkey  (cost=0.00..586.43 rows=60000 width=0)
+                                            Index Cond: (c_nationkey = n1.n_nationkey)
+              ->  Hash  (cost=1.25..1.25 rows=25 width=30)
+                    ->  Seq Scan on nation n2  (cost=0.00..1.25 rows=25 width=30)
+Time: 2.799 ms
+Timing is off.
+secs,cov
+3.1132191805000007,0.02951664435027886

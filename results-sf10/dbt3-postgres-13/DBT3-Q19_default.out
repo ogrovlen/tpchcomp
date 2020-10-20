@@ -1,0 +1,53 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.594 ms
+revenue
+37019578.3816
+Time: 1198.617 ms (00:01.199)
+revenue
+37019578.3816
+Time: 781.408 ms
+secs,cov
+0.987958743,0.21008492861730768
+Time: 0.999 ms
+pg_stat_statements_reset
+
+Time: 0.162 ms
+revenue
+37019578.3816
+Time: 789.743 ms
+revenue
+37019578.3816
+Time: 793.216 ms
+revenue
+37019578.3816
+Time: 791.048 ms
+revenue
+37019578.3816
+Time: 786.217 ms
+revenue
+37019578.3816
+Time: 784.146 ms
+revenue
+37019578.3816
+Time: 785.510 ms
+revenue
+37019578.3816
+Time: 788.368 ms
+revenue
+37019578.3816
+Time: 844.794 ms
+QUERY PLAN
+Aggregate  (cost=688705.10..688705.11 rows=1 width=32)
+  ->  Nested Loop  (cost=0.44..688696.90 rows=1093 width=12)
+        ->  Seq Scan on part  (cost=0.00..125962.00 rows=4702 width=30)
+"              Filter: ((p_size >= 1) AND (((p_brand = 'Brand#12'::bpchar) AND (p_container = ANY ('{""SM CASE"",""SM BOX"",""SM PACK"",""SM PKG""}'::bpchar[])) AND (p_size <= 5)) OR ((p_brand = 'Brand#22'::bpchar) AND (p_container = ANY ('{""MED BAG"",""MED BOX"",""MED PKG"",""MED PACK""}'::bpchar[])) AND (p_size <= 10)) OR ((p_brand = 'Brand#35'::bpchar) AND (p_container = ANY ('{""LG CASE"",""LG BOX"",""LG PACK"",""LG PKG""}'::bpchar[])) AND (p_size <= 15))))"
+        ->  Index Scan using lineitem_l_partkey_idx on lineitem  (cost=0.44..119.67 rows=1 width=21)
+              Index Cond: (l_partkey = part.p_partkey)
+"              Filter: ((l_shipmode = ANY ('{AIR,""AIR REG""}'::bpchar[])) AND (l_shipinstruct = 'DELIVER IN PERSON'::bpchar) AND (((l_quantity >= '1'::numeric) AND (l_quantity <= '11'::numeric)) OR ((l_quantity >= '11'::numeric) AND (l_quantity <= '21'::numeric)) OR ((l_quantity >= '27'::numeric) AND (l_quantity <= '37'::numeric))) AND (((part.p_brand = 'Brand#12'::bpchar) AND (part.p_container = ANY ('{""SM CASE"",""SM BOX"",""SM PACK"",""SM PKG""}'::bpchar[])) AND (l_quantity >= '1'::numeric) AND (l_quantity <= '11'::numeric) AND (part.p_size <= 5)) OR ((part.p_brand = 'Brand#22'::bpchar) AND (part.p_container = ANY ('{""MED BAG"",""MED BOX"",""MED PKG"",""MED PACK""}'::bpchar[])) AND (l_quantity >= '11'::numeric) AND (l_quantity <= '21'::numeric) AND (part.p_size <= 10)) OR ((part.p_brand = 'Brand#35'::bpchar) AND (part.p_container = ANY ('{""LG CASE"",""LG BOX"",""LG PACK"",""LG PKG""}'::bpchar[])) AND (l_quantity >= '27'::numeric) AND (l_quantity <= '37'::numeric) AND (part.p_size <= 15))))"
+Time: 1.163 ms
+Timing is off.
+secs,cov
+0.7944418849999999,0.02369011798552133

@@ -1,0 +1,98 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.592 ms
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 3986.063 ms (00:03.986)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2582.574 ms (00:02.583)
+secs,cov
+3.2805636380000003,0.21368092875264635
+Time: 1.071 ms
+pg_stat_statements_reset
+
+Time: 0.169 ms
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2566.976 ms (00:02.567)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2583.171 ms (00:02.583)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2578.215 ms (00:02.578)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2606.319 ms (00:02.606)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2593.516 ms (00:02.594)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2588.245 ms (00:02.588)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2578.944 ms (00:02.579)
+o_orderpriority,order_count
+1-URGENT       ,105186
+2-HIGH         ,104943
+3-MEDIUM       ,105315
+4-NOT SPECIFIED,105540
+5-LOW          ,105091
+Time: 2577.472 ms (00:02.577)
+QUERY PLAN
+GroupAggregate  (cost=717123.55..717238.57 rows=5 width=24)
+  Group Key: orders.o_orderpriority
+  ->  Sort  (cost=717123.55..717161.87 rows=15329 width=16)
+        Sort Key: orders.o_orderpriority
+        ->  Nested Loop Semi Join  (cost=7608.02..716057.88 rows=15329 width=16)
+              ->  Bitmap Heap Scan on orders  (cost=7607.45..276865.33 rows=556392 width=20)
+                    Recheck Cond: ((o_orderdate >= '1996-08-01'::date) AND (o_orderdate < '1996-11-01'::date))
+                    ->  Bitmap Index Scan on orders_o_orderdate_idx  (cost=0.00..7468.36 rows=556392 width=0)
+                          Index Cond: ((o_orderdate >= '1996-08-01'::date) AND (o_orderdate < '1996-11-01'::date))
+              ->  Index Scan using lineitem_l_orderkey_idx on lineitem  (cost=0.56..11.04 rows=48 width=4)
+                    Index Cond: (l_orderkey = orders.o_orderkey)
+                    Filter: (l_commitdate < l_receiptdate)
+Time: 0.864 ms
+Timing is off.
+secs,cov
+2.581225062125,0.004321710245642195

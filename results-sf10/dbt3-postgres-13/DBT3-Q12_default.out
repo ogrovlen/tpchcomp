@@ -1,0 +1,67 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.611 ms
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 23447.290 ms (00:23.447)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19991.651 ms (00:19.992)
+secs,cov
+21.714575987,0.07951498970247889
+Time: 1.068 ms
+pg_stat_statements_reset
+
+Time: 0.165 ms
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19959.666 ms (00:19.960)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19957.759 ms (00:19.958)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19944.476 ms (00:19.944)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19972.278 ms (00:19.972)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19970.774 ms (00:19.971)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19952.049 ms (00:19.952)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19938.253 ms (00:19.938)
+l_shipmode,high_line_count,low_line_count
+AIR       ,62410,93883
+RAIL      ,62684,93640
+Time: 19922.805 ms (00:19.923)
+QUERY PLAN
+GroupAggregate  (cost=3218163.80..3223874.01 rows=7 width=27)
+  Group Key: lineitem.l_shipmode
+  ->  Sort  (cost=3218163.80..3218877.57 rows=285507 width=27)
+        Sort Key: lineitem.l_shipmode
+        ->  Merge Join  (cost=2500139.78..3192292.35 rows=285507 width=27)
+              Merge Cond: (orders.o_orderkey = lineitem.l_orderkey)
+              ->  Index Scan using pk_orders on orders  (cost=0.43..650435.44 rows=15000000 width=20)
+              ->  Sort  (cost=2500099.62..2500813.39 rows=285507 width=15)
+                    Sort Key: lineitem.l_orderkey
+                    ->  Seq Scan on lineitem  (cost=0.00..2474228.17 rows=285507 width=15)
+"                          Filter: ((l_shipmode = ANY ('{RAIL,AIR}'::bpchar[])) AND (l_commitdate < l_receiptdate) AND (l_shipdate < l_commitdate) AND (l_receiptdate >= '1993-01-01'::date) AND (l_receiptdate < '1994-01-01 00:00:00'::timestamp without time zone))"
+Time: 1.029 ms
+Timing is off.
+secs,cov
+19.948506865875004,0.0007836279569923488

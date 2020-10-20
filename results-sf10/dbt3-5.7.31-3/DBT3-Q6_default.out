@@ -1,0 +1,35 @@
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	SIMPLE	lineitem	NULL	ALL	i_l_shipdate	NULL	NULL	NULL	59986052	1.06	Using where
+Variable_name	Value
+Last_query_cost	12512218.399000
+t (s)	sql_text
+27.274258823	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.235160714	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.256093116	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.212205463	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.219035166	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.214860124	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.335980288	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+27.226825527	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+avg	CoV
+27.2468024026250	0.0014400244878140013

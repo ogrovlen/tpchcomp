@@ -1,0 +1,76 @@
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+o_orderpriority	order_count
+1-URGENT	105186
+2-HIGH	104943
+3-MEDIUM	105315
+4-NOT SPECIFIED	105540
+5-LOW	105091
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	PRIMARY	orders	NULL	range	i_o_orderdate	i_o_orderdate	4	NULL	1217234	100.00	Using index condition; Using where; Using temporary; Using filesort
+2	DEPENDENT SUBQUERY	lineitem	NULL	ref	PRIMARY,i_l_orderkey	PRIMARY	4	dbt3_sf10.orders.o_orderkey	3	33.33	Using where
+Variable_name	Value
+Last_query_cost	0.000000
+t (s)	sql_text
+5.906813122	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.898706849	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.897984707	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.899463579	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.883688390	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.860092278	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.897325758	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+5.915550773	select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\torders\nwhere\n\to_orderdate >=  '1996-08-01'\n\tand o_orderdate < date_add( '1996-08-01', interval '3' month)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority
+avg	CoV
+5.8949531820000	0.002652759813436612

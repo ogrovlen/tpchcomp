@@ -1,0 +1,97 @@
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+cntrycode	numcust	totacctbal
+14	9013	67801655.90
+16	8971	67253661.58
+18	9210	69312783.61
+20	9246	69455185.22
+23	8985	67612769.43
+28	9027	67660096.94
+33	9179	68880125.08
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	PRIMARY	customer	NULL	ALL	NULL	NULL	NULL	NULL	1500000	33.33	Using where; Using temporary; Using filesort
+4	DEPENDENT SUBQUERY	orders	NULL	ref	i_o_custkey	i_o_custkey	5	dbt3_sf10.customer.c_custkey	15	100.00	Using index
+3	SUBQUERY	customer	NULL	ALL	NULL	NULL	NULL	NULL	1500000	33.33	Using where
+Variable_name	Value
+Last_query_cost	0.000000
+t (s)	sql_text
+2.212895672	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.201078168	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.202887341	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.207932765	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.203652653	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.206013363	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.199815005	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+2.199003602	select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tsubstr(c_phone from 1 for 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tcustomer\n\t\twhere\n\t\t\tsubstr(c_phone from 1 for 2) in\n\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tcustomer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand substr(c_phone from 1 for 2) in\n\t\t\t\t\t\t('18', '20', '33', '14', '16', '28', '23')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\torders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode
+avg	CoV
+2.2041598211250	0.001969905954155083

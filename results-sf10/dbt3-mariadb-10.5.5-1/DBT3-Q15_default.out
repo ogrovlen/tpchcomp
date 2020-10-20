@@ -1,0 +1,39 @@
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+s_suppkey	s_name	s_address	s_phone	total_revenue
+97884	Supplier#000097884	dIMTUp l5I	22-665-524-1387	2226856.7654
+id	select_type	table	type	possible_keys	key	key_len	ref	rows	Extra
+1	PRIMARY	supplier	index	PRIMARY	PRIMARY	4	NULL	100000	
+1	PRIMARY	<derived2>	ref	key0	key0	5	dbt3_sf10.supplier.s_suppkey	42	Using where
+3	SUBQUERY	<derived4>	ALL	NULL	NULL	NULL	NULL	4297594	
+4	DERIVED	lineitem	range	i_l_shipdate	i_l_shipdate	4	NULL	4297594	Using index condition; Using temporary; Using filesort
+2	DERIVED	lineitem	range	i_l_suppkey,i_l_shipdate	i_l_shipdate	4	NULL	4297594	Using index condition; Using temporary; Using filesort
+Variable_name	Value
+Last_query_cost	0.000000
+t (s)	sql_text
+21.783221515	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.758363068	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.734313115	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.751064810	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.736336754	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.726851159	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.749195878	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+21.750680002	with revenue (supplier_no, total_revenue) as (\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tlineitem\n\twhere\n\t\tl_shipdate >= '1995-09-01'\n\t\tand l_shipdate < date_add('1995-09-01', interval '90' day)\n\tgroup by\n\t\tl_suppkey\n)\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tsupplier,\n\trevenue\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\trevenue\n\t)\norder by\n\ts_suppkey
+avg	CoV
+21.7487532876250	0.00075061861098146

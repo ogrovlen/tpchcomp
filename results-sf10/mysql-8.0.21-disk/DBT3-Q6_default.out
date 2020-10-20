@@ -1,0 +1,20 @@
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+revenue
+1641525532.8238
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	SIMPLE	lineitem	NULL	ALL	i_l_shipdate	NULL	NULL	NULL	59986052	3.57	Using where
+Variable_name	Value
+Last_query_cost	6480350.039136
+t (s)	sql_text
+28.581825917	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+28.590641437	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+28.586669914	select\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tlineitem\nwhere\n\tl_shipdate >= '1995-01-01'\n\tand l_shipdate < date_add( '1995-01-01' , interval '1' year)\n\tand l_discount between 0.08 - 0.01 and 0.08 + 0.01\n\tand l_quantity < 24
+avg	CoV
+28.5863790893333	0.00012610171690808275

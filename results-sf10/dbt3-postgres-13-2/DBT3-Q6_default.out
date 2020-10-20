@@ -1,0 +1,52 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.747 ms
+revenue
+1641525532.8238
+Time: 13952.713 ms (00:13.953)
+revenue
+1641525532.8238
+Time: 11408.154 ms (00:11.408)
+secs,cov
+12.6686398725,0.10031563295588496
+Time: 1.009 ms
+pg_stat_statements_reset
+
+Time: 0.158 ms
+revenue
+1641525532.8238
+Time: 9133.638 ms (00:09.134)
+revenue
+1641525532.8238
+Time: 9456.924 ms (00:09.457)
+revenue
+1641525532.8238
+Time: 9172.600 ms (00:09.173)
+revenue
+1641525532.8238
+Time: 9134.933 ms (00:09.135)
+revenue
+1641525532.8238
+Time: 7726.291 ms (00:07.726)
+revenue
+1641525532.8238
+Time: 11981.281 ms (00:11.981)
+revenue
+1641525532.8238
+Time: 8460.381 ms (00:08.460)
+revenue
+1641525532.8238
+Time: 8418.930 ms (00:08.419)
+QUERY PLAN
+Aggregate  (cost=2070804.79..2070804.80 rows=1 width=32)
+  ->  Bitmap Heap Scan on lineitem  (cost=123530.88..2065030.26 rows=1154904 width=12)
+        Recheck Cond: ((l_shipdate >= '1995-01-01'::date) AND (l_shipdate < '1996-01-01'::date))
+        Filter: ((l_discount >= 0.07) AND (l_discount <= 0.09) AND (l_quantity < '24'::numeric))
+        ->  Bitmap Index Scan on lineitem_l_shipdate_idx  (cost=0.00..123242.15 rows=9201759 width=0)
+              Index Cond: ((l_shipdate >= '1995-01-01'::date) AND (l_shipdate < '1996-01-01'::date))
+Time: 0.652 ms
+Timing is off.
+secs,cov
+9.17510684875,0.12862205292044288

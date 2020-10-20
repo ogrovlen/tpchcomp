@@ -1,0 +1,46 @@
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+l_shipmode	high_line_count	low_line_count
+AIR	62410	93883
+RAIL	62684	93640
+id	select_type	table	type	possible_keys	key	key_len	ref	rows	Extra
+1	SIMPLE	orders	ALL	PRIMARY	NULL	NULL	NULL	15000000	Using temporary; Using filesort
+1	SIMPLE	lineitem	ref	PRIMARY,i_l_orderkey	PRIMARY	4	dbt3_sf10.orders.o_orderkey	1	Using where
+Variable_name	Value
+Last_query_cost	36166062.656774
+t (s)	sql_text
+71.577756061	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.561249865	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.587698275	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.560343974	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.565883804	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.591859398	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.578658252	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+71.560845706	select\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\torders,\n\tlineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('RAIL', 'AIR')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n\tand l_receiptdate >= '1993-01-01'\n\tand l_receiptdate < date_add( '1993-01-01', interval '1' year)\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode
+avg	CoV
+71.5730369168750	0.00016553337688542

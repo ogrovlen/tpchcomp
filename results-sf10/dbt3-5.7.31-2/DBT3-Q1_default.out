@@ -1,0 +1,65 @@
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+l_returnflag	l_linestatus	sum_qty	sum_base_price	sum_disc_price	sum_charge	avg_qty	avg_price	avg_disc	count_order
+A	F	377518399.00	566065727797.25	537759104278.0656	559276670892.116819	25.500975	38237.151009	0.050007	14804077
+N	F	9851614.00	14767438399.17	14028805792.2114	14590490998.366737	25.522448	38257.810660	0.049973	385998
+N	O	727730443.00	1091216245667.43	1036650078747.7029	1078128388865.275418	25.497714	38233.277672	0.050000	28541007
+R	F	377732830.00	566431054976.00	538110922664.7677	559634780885.086257	25.508385	38251.219274	0.049997	14808183
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	SIMPLE	lineitem	NULL	ALL	i_l_shipdate	NULL	NULL	NULL	59986052	50.00	Using where; Using temporary; Using filesort
+Variable_name	Value
+Last_query_cost	42505244.399000
+t (s)	sql_text
+160.514956141	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.734414486	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.312489497	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.400494923	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.676684073	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.385350066	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.427461838	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+160.630919357	select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tlineitem\nwhere\n\tl_shipdate <= date_sub('1998-12-01', interval '118' day)\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus
+avg	CoV
+160.5103462976250	0.0008978262150773621

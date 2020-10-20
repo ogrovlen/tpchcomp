@@ -1,0 +1,103 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 0.635 ms
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 11199.585 ms (00:11.200)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8075.105 ms (00:08.075)
+secs,cov
+9.627897543000001,0.16207318919118663
+Time: 0.970 ms
+pg_stat_statements_reset
+
+Time: 0.162 ms
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 7985.979 ms (00:07.986)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8101.758 ms (00:08.102)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 7999.484 ms (00:07.999)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8067.688 ms (00:08.068)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8023.203 ms (00:08.023)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8029.442 ms (00:08.029)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8116.783 ms (00:08.117)
+supp_nation,cust_nation,l_year,revenue
+BRAZIL                   ,SAUDI ARABIA             ,1995,528329929.1434
+BRAZIL                   ,SAUDI ARABIA             ,1996,522530417.4399
+SAUDI ARABIA             ,BRAZIL                   ,1995,525615441.1778
+SAUDI ARABIA             ,BRAZIL                   ,1996,536117471.2490
+Time: 8038.415 ms (00:08.038)
+QUERY PLAN
+GroupAggregate  (cost=833411.88..834624.21 rows=10024 width=92)
+"  Group Key: n1.n_name, n2.n_name, (date_part('year'::text, (lineitem.l_shipdate)::timestamp without time zone))"
+  ->  Sort  (cost=833411.88..833560.01 rows=59252 width=72)
+"        Sort Key: n1.n_name, n2.n_name, (date_part('year'::text, (lineitem.l_shipdate)::timestamp without time zone))"
+        ->  Hash Join  (cost=278655.22..828714.80 rows=59252 width=72)
+              Hash Cond: (lineitem.l_orderkey = orders.o_orderkey)
+              Join Filter: (((n1.n_name = 'SAUDI ARABIA'::bpchar) AND (n2.n_name = 'BRAZIL'::bpchar)) OR ((n1.n_name = 'BRAZIL'::bpchar) AND (n2.n_name = 'SAUDI ARABIA'::bpchar)))
+              ->  Nested Loop  (cost=0.86..508914.99 rows=1423774 width=46)
+                    ->  Nested Loop  (cost=0.29..7787.24 rows=8000 width=30)
+                          Join Filter: (supplier.s_nationkey = n1.n_nationkey)
+                          ->  Index Scan using pk_supplier on supplier  (cost=0.29..4825.86 rows=100000 width=8)
+                          ->  Materialize  (cost=0.00..1.39 rows=2 width=30)
+                                ->  Seq Scan on nation n1  (cost=0.00..1.38 rows=2 width=30)
+                                      Filter: ((n_name = 'SAUDI ARABIA'::bpchar) OR (n_name = 'BRAZIL'::bpchar))
+                    ->  Index Scan using lineitem_l_suppkey_idx on lineitem  (cost=0.56..60.86 rows=178 width=24)
+                          Index Cond: (l_suppkey = supplier.s_suppkey)
+                          Filter: ((l_shipdate >= '1995-01-01'::date) AND (l_shipdate <= '1996-12-31'::date))
+              ->  Hash  (cost=255450.36..255450.36 rows=1200000 width=30)
+                    ->  Nested Loop  (cost=1.83..255450.36 rows=1200000 width=30)
+                          ->  Hash Join  (cost=1.40..55433.40 rows=120000 width=30)
+                                Hash Cond: (customer.c_nationkey = n2.n_nationkey)
+                                ->  Seq Scan on customer  (cost=0.00..50827.00 rows=1500000 width=8)
+                                ->  Hash  (cost=1.38..1.38 rows=2 width=30)
+                                      ->  Seq Scan on nation n2  (cost=0.00..1.38 rows=2 width=30)
+                                            Filter: ((n_name = 'BRAZIL'::bpchar) OR (n_name = 'SAUDI ARABIA'::bpchar))
+                          ->  Index Scan using orders_o_custkey_idx on orders  (cost=0.43..1.49 rows=18 width=8)
+                                Index Cond: (o_custkey = customer.c_custkey)
+Time: 2.148 ms
+Timing is off.
+secs,cov
+8.03783770325,0.005422764770792224

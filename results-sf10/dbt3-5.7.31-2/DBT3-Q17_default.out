@@ -1,0 +1,37 @@
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+avg_yearly
+3192441.447143
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	PRIMARY	part	NULL	ALL	PRIMARY	NULL	NULL	NULL	2000000	1.00	Using where
+1	PRIMARY	lineitem	NULL	ref	i_l_partkey,i_l_partkey_suppkey	i_l_partkey	5	dbt3_sf10.part.p_partkey	29	100.00	Using where
+2	DEPENDENT SUBQUERY	lineitem	NULL	ref	i_l_partkey,i_l_partkey_suppkey	i_l_partkey	5	dbt3_sf10.part.p_partkey	29	100.00	NULL
+Variable_name	Value
+Last_query_cost	0.000000
+t (s)	sql_text
+6.729330210	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.735890324	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.731533151	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.734666173	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.733700228	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.733386193	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.730386837	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+6.726075934	select\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tlineitem,\n\tpart\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#11'\n\tand p_container = 'SM CAN'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tlineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)
+avg	CoV
+6.7318711312500	0.0004455333962189214

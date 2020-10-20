@@ -1,0 +1,55 @@
+Timing is on.
+Timing is on.
+pg_stat_statements_reset
+
+Time: 1.543 ms
+promo_revenue
+16.6925413107280584
+Time: 43112.136 ms (00:43.112)
+promo_revenue
+16.6925413107280584
+Time: 2873.242 ms (00:02.873)
+secs,cov
+22.9874974615,0.8750924979194042
+Time: 2.828 ms
+pg_stat_statements_reset
+
+Time: 0.186 ms
+promo_revenue
+16.6925413107280584
+Time: 2564.541 ms (00:02.565)
+promo_revenue
+16.6925413107280584
+Time: 3590.385 ms (00:03.590)
+promo_revenue
+16.6925413107280584
+Time: 3460.870 ms (00:03.461)
+promo_revenue
+16.6925413107280584
+Time: 3385.072 ms (00:03.385)
+promo_revenue
+16.6925413107280584
+Time: 3357.010 ms (00:03.357)
+promo_revenue
+16.6925413107280584
+Time: 3406.141 ms (00:03.406)
+promo_revenue
+16.6925413107280584
+Time: 3242.011 ms (00:03.242)
+promo_revenue
+16.6925413107280584
+Time: 3274.070 ms (00:03.274)
+QUERY PLAN
+Aggregate  (cost=1219857.74..1219857.76 rows=1 width=32)
+  ->  Hash Join  (cost=110033.99..1206521.16 rows=762090 width=33)
+        Hash Cond: (lineitem.l_partkey = part.p_partkey)
+        ->  Bitmap Heap Scan on lineitem  (cost=10399.99..1083770.67 rows=762090 width=16)
+              Recheck Cond: ((l_shipdate >= '1993-03-01'::date) AND (l_shipdate < '1993-04-01'::date))
+              ->  Bitmap Index Scan on lineitem_l_shipdate_idx  (cost=0.00..10209.47 rows=762090 width=0)
+                    Index Cond: ((l_shipdate >= '1993-03-01'::date) AND (l_shipdate < '1993-04-01'::date))
+        ->  Hash  (cost=60962.00..60962.00 rows=2000000 width=25)
+              ->  Seq Scan on part  (cost=0.00..60962.00 rows=2000000 width=25)
+Time: 2.381 ms
+Timing is off.
+secs,cov
+3.2795872975,0.08812414595771631

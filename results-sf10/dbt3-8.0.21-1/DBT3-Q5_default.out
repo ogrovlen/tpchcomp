@@ -1,0 +1,80 @@
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+n_name	revenue
+INDIA	549313339.9924
+CHINA	532192336.1127
+VIETNAM	532041185.1810
+JAPAN	522646813.0067
+INDONESIA	519269180.7314
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	SIMPLE	region	NULL	ALL	PRIMARY	NULL	NULL	NULL	5	20.00	Using where; Using temporary; Using filesort
+1	SIMPLE	nation	NULL	ref	PRIMARY,i_n_regionkey	i_n_regionkey	5	dbt3_sf10.region.r_regionkey	5	100.00	NULL
+1	SIMPLE	customer	NULL	ref	PRIMARY,i_c_nationkey	i_c_nationkey	5	dbt3_sf10.nation.n_nationkey	60000	100.00	Using index
+1	SIMPLE	orders	NULL	ref	PRIMARY,i_o_custkey,i_o_orderdate	i_o_custkey	5	dbt3_sf10.customer.c_custkey	15	29.06	Using where
+1	SIMPLE	lineitem	NULL	ref	PRIMARY,i_l_orderkey,i_l_suppkey	PRIMARY	4	dbt3_sf10.orders.o_orderkey	3	100.00	Using where
+1	SIMPLE	supplier	NULL	eq_ref	PRIMARY,i_s_nationkey	PRIMARY	4	dbt3_sf10.lineitem.l_suppkey	1	5.00	Using where
+Variable_name	Value
+Last_query_cost	4288349.215899
+t (s)	sql_text
+20.163659090	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.202651265	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.192476932	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.156742762	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.173363441	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.159251390	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.169200861	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+20.161818882	select\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tcustomer,\n\torders,\n\tlineitem,\n\tsupplier,\n\tnation,\n\tregion\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= '1995-01-01'\n\tand o_orderdate < date_add( '1995-01-01', interval '1' year)\ngroup by\n\tn_name\norder by\n\trevenue desc
+avg	CoV
+20.1723955778750	0.0007711270021696669
