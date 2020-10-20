@@ -1,0 +1,56 @@
+#
+# The MySQL database server configuration file.
+#
+# This was formally known as [safe_mysqld]. Both versions are currently parsed.
+[mysqld_safe]
+core-file-size = 1000000000000
+#nice		= 0
+
+[mysqld]
+#
+# * Basic Settings
+#
+#mysqlx = off
+default-storage-engine = innodb
+tmpdir = /dev/shm/mysql/tmp
+skip-external-locking
+#skip-networking
+skip-log-bin
+secure-file-priv=/
+core-file
+
+# Make sure to keep statistics for sufficient number of repititions of queries
+performance_schema=ON
+performance_schema_consumer_events_statements_current=ON
+performance_schema_consumer_events_statements_history=ON
+performance_schema_events_statements_history_size=50
+
+# Used for MRR/BKA/BNL
+read_rnd_buffer_size=64M
+join_buffer_size=64M
+#sort_buffer_size=2048M
+
+# Innodb settings
+innodb_buffer_pool_size=32G
+innodb_doublewrite=false
+innodb_flush_method=O_DIRECT
+#innodb_numa_interleave=ON
+#innodb_buffer_pool_load_at_startup=OFF
+
+# Sample all pages in DBT3 SF10 database
+innodb_stats_persistent_sample_pages=1000000
+
+# Settings to reduce variability in exec times
+innodb_adaptive_hash_index=OFF
+innodb_old_blocks_time=0
+
+# For investigating mutex contention
+#performance-schema-instrument='wait/%=ON'
+
+# For investigating server initialization
+#log_error_verbosity = 3
+#innodb_log_file_size = 25165824
+
+#sys_default_user_list = root
+#resource_group_enabled = 0
+#performance_schema_max_digest_length=512
