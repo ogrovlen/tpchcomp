@@ -1,7 +1,7 @@
 This directory constains different scripts to generate databases, run tests, and collect results.  For MySQL/MariaDB dbdeployer is used to administer the databases
 and run client programs.  For PostgreSQL this is done manually.
 
-Description of scripts used to create and load databases:
+Scripts used to create and load databases:
 
   * dbt3-dbdeployer - Use dbdeployer for MySQL/MariaDB to create database and tables, load tables, and create histograms
   * dbdeployer-load-tables - Load tables, create indexes, run ANALYZE
@@ -12,7 +12,7 @@ Description of scripts used to create and load databases:
   * dbt3-pg-create-tables.sql - Create tables for PostgreSQL
   * dbt3-pg-load-data - Load data and create indexes for PostgreSQL
   
-Description of scripts used to run tests:
+Scripts used to run tests:
 
   * dbt3-run-test - Start database, run tests, stop database, collect results (MySQL/MariaDB)
   * run-pg-test - Same for PostgreSQL
@@ -29,7 +29,7 @@ Description of scripts used to run tests:
   
 Misc:
   * mysqld-bind-cpu - Bind the MySQL process to specific cores.  Needs to copied to the bin-directory of dbdeployer, and used for the --custom-mysqld option of "dbdeployer deploy"
-  * bind-postgres - Shell script to bind PostgreSQL to specific cores
+  * bind-postgres - Shell script to bind PostgreSQL to specific cores. Run after the server has been started.
   
 
 
